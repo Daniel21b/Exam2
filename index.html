@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calming Study Space</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #2e8b57;
+        }
+        h1 {
+            text-align: center;
+        }
+        a {
+            color: #2e8b57;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .visual {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .visual img {
+            max-width: 100%;
+            height: auto;
+        }
+        .memory-aid {
+            background-color: #e6ffe6;
+            padding: 10px;
+            border-left: 5px solid #2e8b57;
+            margin: 20px 0;
+        }
+        .quick-recap {
+            background-color: #fff0f5;
+            padding: 10px;
+            border-left: 5px solid #db7093;
+            margin: 20px 0;
+        }
+        .affirmation {
+            text-align: center;
+            font-style: italic;
+            color: #2e8b57;
+            margin: 40px 0;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Welcome</h1>
+
+
+<hr>
+
+<h2 id="cfgs">CFGs</h2>
+
+<h3>Understanding Context-Free Grammars</h3>
+
+<p>A <strong>Context-Free Grammar (CFG)</strong> is a set of recursive rewriting rules used to generate patterns of strings. CFGs are essential in designing programming languages and compilers.</p>
+
+<div class="visual">
+    <img src="CFG_Diagram.png" alt="CFG Diagram">
+    <p><em>(Visual: A diagram showing how non-terminals expand into terminals using production rules.)</em></p>
+</div>
+
+<h4>Key Concepts:</h4>
+<ul>
+    <li><strong>Non-Terminals (NT)</strong>: Symbols that can be expanded into other symbols (e.g., <code>S</code>, <code>A</code>, <code>B</code>).</li>
+    <li><strong>Terminals (T)</strong>: Basic symbols that cannot be expanded further (e.g., <code>a</code>, <code>b</code>, <code>+</code>, <code>*</code>).</li>
+    <li><strong>Production Rules</strong>: Define how non-terminals can be replaced with terminals and other non-terminals.</li>
+</ul>
+
+<div class="memory-aid">
+    <h4>Memory Aids</h4>
+    <ul>
+        <li><strong>NT and T</strong>: Think of Non-Terminals as "Not There Yet" and Terminals as "There" — NTs need further expansion, Ts are final.</li>
+        <li><strong>CFG Structure</strong>: Remember "Start Small, Grow Big" — starting from a small symbol, we expand to generate larger strings.</li>
+    </ul>
+</div>
+
+<h3>Why CFGs Are Powerful</h3>
+
+<p>CFGs can describe complex patterns that regular expressions cannot, such as:</p>
+
+<ul>
+    <li><strong>Palindromes</strong>: Strings that read the same forwards and backwards.</li>
+    <li><strong>Nested Structures</strong>: Balanced parentheses, nested loops, etc.</li>
+    <li><strong>Matched Quantities</strong>: Patterns like \( a^n b^n \), where the number of <code>a</code>'s matches the number of <code>b</code>'s.</li>
+</ul>
+
+<div class="visual">
+    <img src="https://example.com/palindrome-cfg.png" alt="Palindrome CFG">
+    <p><em>(Visual: A parse tree demonstrating the generation of a palindrome.)</em></p>
+</div>
+
+<h3>Parse Trees and Ambiguity</h3>
+
+<p><strong>Parse Trees</strong>: Visual representations showing how a string is derived from the grammar.</p>
+
+<div class="visual">
+    <img src="https://example.com/parse-tree.png" alt="Parse Tree">
+    <p><em>(Visual: A tree structure showing derivations from the start symbol to terminals.)</em></p>
+</div>
+
+<p><strong>Ambiguous Grammars</strong>: Grammars where a single string can have multiple parse trees.</p>
+
+<h4>Handling Ambiguity:</h4>
+<ul>
+    <li><strong>Eliminate Left Recursion</strong>: Modify rules to remove immediate left recursion.</li>
+    <li><strong>Factor the Grammar</strong>: Rewrite rules to reduce ambiguity.</li>
+    <li><strong>Introduce Precedence</strong>: Define operator precedence to resolve ambiguities in expressions.</li>
+</ul>
+
+<div class="quick-recap">
+    <h4>Quick Recap</h4>
+    <ul>
+        <li>CFGs help define the syntax of languages.</li>
+        <li>Non-Terminals can be expanded; Terminals cannot.</li>
+        <li>Ambiguity can be resolved by refining grammar rules.</li>
+    </ul>
+</div>
+
+<hr>
+
+<h2 id="lexing-parsing-and-interpreters">Lexing, Parsing, and Interpreters</h2>
+
+<h3>The Three Pillars</h3>
+
+<ol>
+    <li><strong>Lexing</strong>: Breaking code into tokens.</li>
+    <li><strong>Parsing</strong>: Building an Abstract Syntax Tree (AST) from tokens.</li>
+    <li><strong>Interpreting</strong>: Executing the code represented by the AST.</li>
+</ol>
+
+<div class="visual">
+    <img src="https://example.com/lexing-parsing-interpreting.png" alt="Lexing to Interpreting">
+    <p><em>(Visual: A flowchart showing the process from source code to execution.)</em></p>
+</div>
+
+<h3>Lexing</h3>
+
+<p><strong>Purpose</strong>: Convert source code into a sequence of tokens.</p>
+<p><strong>Tokens</strong>: Basic elements like keywords, identifiers, literals, and operators.</p>
+
+<div class="memory-aid">
+    <h4>Memory Aid</h4>
+    <p><strong>"Let’s Eat Xylophones"</strong>: Lexing Extracts Tokens.</p>
+</div>
+
+<h3>Parsing</h3>
+
+<p><strong>Purpose</strong>: Analyze tokens to form an AST according to grammatical rules.</p>
+<p><strong>Types of Parsers</strong>:</p>
+<ul>
+    <li><strong>LL(1) Parser</strong>: Left-to-right scanning with 1-token lookahead.</li>
+</ul>
+
+<div class="visual">
+    <img src="https://example.com/ast-example.png" alt="AST Example">
+    <p><em>(Visual: An AST for a simple arithmetic expression.)</em></p>
+</div>
+
+<div class="memory-aid">
+    <h4>Memory Aid</h4>
+    <p><strong>"Parsing Assembles Syntax Trees"</strong>.</p>
+</div>
+
+<h3>Interpreting</h3>
+
+<p><strong>Purpose</strong>: Traverse the AST to perform computations.</p>
+<p><strong>Error Handling</strong>: Semantic errors are caught during interpretation.</p>
+
+<div class="memory-aid">
+    <h4>Memory Aid</h4>
+    <p><strong>"Interpreters Execute Trees"</strong>.</p>
+</div>
+
+<div class="quick-recap">
+    <h4>Quick Recap</h4>
+    <ul>
+        <li>Lexing transforms code into tokens.</li>
+        <li>Parsing organizes tokens into an AST.</li>
+        <li>Interpreting executes the AST.</li>
+    </ul>
+</div>
+
+<hr>
+
+<h2 id="operational-semantics">Operational Semantics</h2>
+
+<h3>Giving Meaning to Programs</h3>
+
+<p>Operational semantics define how the execution of programs proceeds in a step-by-step manner.</p>
+
+<div class="visual">
+    <img src="https://example.com/operational-semantics.png" alt="Operational Semantics Flow">
+    <p><em>(Visual: Diagram showing the evaluation steps of an expression.)</em></p>
+</div>
+
+<h4>Types of Semantics:</h4>
+<ol>
+    <li><strong>Denotational</strong>: Mathematical functions represent program meaning.</li>
+    <li><strong>Axiomatic</strong>: Uses logical assertions.</li>
+    <li><strong>Operational</strong>: Describes the behavior in terms of state changes.</li>
+</ol>
+
+<h3>Key Concepts</h3>
+
+<ul>
+    <li><strong>Configurations</strong>: Pairs of expressions and environments.</li>
+    <li><strong>Evaluation Rules</strong>: Define how expressions reduce.</li>
+</ul>
+
+<div class="memory-aid">
+    <h4>Memory Aid</h4>
+    <p><strong>"Operations Step-by-Step"</strong>.</p>
+</div>
+
+<h3>Example Evaluation</h3>
+
+<p>Evaluate <code>let x = 2 in x + 3</code>.</p>
+
+<ol>
+    <li><strong>Environment</strong>: <code>{ x → 2 }</code></li>
+    <li><strong>Expression</strong>: <code>x + 3</code></li>
+    <li><strong>Evaluation</strong>: <code>2 + 3 = 5</code></li>
+</ol>
+
+<div class="visual">
+    <img src="https://example.com/evaluation-steps.png" alt="Evaluation Steps">
+    <p><em>(Visual: Step-by-step evaluation showing the environment and expression at each step.)</em></p>
+</div>
+
+<div class="quick-recap">
+    <h4>Quick Recap</h4>
+    <ul>
+        <li>Operational semantics provide a detailed execution model.</li>
+        <li>Environments map variables to values.</li>
+        <li>Evaluation follows defined rules.</li>
+    </ul>
+</div>
+
+<hr>
+
+<h2 id="property-based-testing">Property-Based Testing</h2>
+
+<h3>Testing Properties Over Inputs</h3>
+
+<p>Property-based testing verifies that code behaves correctly across a wide range of inputs.</p>
+
+<div class="visual">
+    <img src="https://example.com/property-based-testing.png" alt="Property-Based Testing">
+    <p><em>(Visual: Diagram showing the process of generating inputs and testing properties.)</em></p>
+</div>
+
+<h4>Core Idea:</h4>
+<ul>
+    <li><strong>Define General Properties</strong>: Universal truths about your functions.</li>
+    <li><strong>Automated Testing</strong>: Use tools to generate random test cases.</li>
+</ul>
+
+<div class="memory-aid">
+    <h4>Memory Aid</h4>
+    <p><strong>"Properties Over Random Inputs"</strong>.</p>
+</div>
+
+<h3>Classic Example</h3>
+
+<p><strong>Reversing a List Twice Returns the Original List</strong></p>
+
+<pre><code>let prop_reverse l = List.rev (List.rev l) = l
+</code></pre>
+
+<h4>Using QCheck in OCaml</h4>
+
+<ol>
+    <li><strong>Define a Generator</strong>:
+        <pre><code>let gen_int_list = QCheck.(list small_int)
+</code></pre>
+    </li>
+    <li><strong>Create a Test</strong>:
+        <pre><code>let test_reverse =
+  QCheck.Test.make
+    ~name:"Reverse of reverse is original"
+    gen_int_list
+    prop_reverse
+</code></pre>
+    </li>
+    <li><strong>Run the Test</strong>:
+        <pre><code>QCheck_runner.run_tests [test_reverse]
+</code></pre>
+    </li>
+</ol>
+
+<div class="visual">
+    <img src="https://example.com/qcheck-testing.png" alt="QCheck Testing">
+    <p><em>(Visual: Flowchart of the QCheck testing process.)</em></p>
+</div>
+
+<div class="quick-recap">
+    <h4>Quick Recap</h4>
+    <ul>
+        <li>Property-based testing checks general properties, not specific cases.</li>
+        <li>Generators create diverse inputs.</li>
+        <li>Helps find edge cases that traditional tests might miss.</li>
+    </ul>
+</div>
+
+<hr>
+
+<h2 id="type-checking-type-inference-and-static-analysis">Type Checking, Type Inference, and Static Analysis</h2>
+
+<h3>Ensuring Code Correctness</h3>
+
+<p>These techniques analyze code to prevent errors before execution.</p>
+
+<div class="visual">
+    <img src="https://example.com/type-checking-process.png" alt="Type Checking Process">
+    <p><em>(Visual: Diagram showing the flow of type checking and inference.)</em></p>
+</div>
+
+<h4>Key Concepts</h4>
+
+<ul>
+    <li><strong>Type Checking</strong>: Verifies that operations are used with compatible types.</li>
+    <li><strong>Type Inference</strong>: Deduces types of expressions automatically.</li>
+    <li><strong>Static Analysis</strong>: Examines code for errors without running it.</li>
+</ul>
+
+<div class="memory-aid">
+    <h4>Memory Aids</h4>
+    <ul>
+        <li><strong>Type Checking</strong>: "Check Types Correctly".</li>
+        <li><strong>Type Inference</strong>: "Infer Types Instantly".</li>
+        <li><strong>Static Analysis</strong>: "Scan All Code".</li>
+    </ul>
+</div>
+
+<h3>Example</h3>
+
+<p><strong>Invalid Operation</strong>: <code>3 + "hello"</code></p>
+
+<ul>
+    <li><strong>Type of <code>3</code></strong>: <code>int</code></li>
+    <li><strong>Type of <code>"hello"</code></strong>: <code>string</code></li>
+    <li><strong>Error</strong>: Cannot add <code>int</code> and <code>string</code>.</li>
+</ul>
+
+<div class="visual">
+    <img src="https://example.com/type-error.png" alt="Type Error">
+    <p><em>(Visual: Illustration showing the mismatch between types leading to an error.)</em></p>
+</div>
+
+<div class="quick-recap">
+    <h4>Quick Recap</h4>
+    <ul>
+        <li>Types prevent certain classes of errors.</li>
+        <li>Type inference simplifies coding by reducing explicit annotations.</li>
+        <li>Static analysis tools enhance code reliability.</li>
+    </ul>
+</div>
+
+<hr>
+
+<h2 id="helpful-tips-for-managing-exam-anxiety">Helpful Tips for Managing Exam Anxiety</h2>
+
+<h3>Create a Relaxing Study Environment</h3>
+
+<ul>
+    <li><strong>Comfortable Space</strong>: Find a quiet, comfortable place to study.</li>
+    <li><strong>Minimize Distractions</strong>: Turn off notifications and reduce clutter.</li>
+    <li><strong>Ambient Music</strong>: Listen to calm, instrumental music if it helps.</li>
+</ul>
+
+<h3>Study Techniques</h3>
+
+<ul>
+    <li><strong>Active Recall</strong>: Test yourself on the material.</li>
+    <li><strong>Teach Someone Else</strong>: Explaining concepts can improve understanding.</li>
+    <li><strong>Mind Maps</strong>: Create visual diagrams linking concepts.</li>
+</ul>
+
+<div class="visual">
+    <img src="https://example.com/mind-map.png" alt="Mind Map Example">
+    <p><em>(Visual: A mind map connecting the topics covered.)</em></p>
+</div>
+
+<h3>Wellness Tips</h3>
+
+<ul>
+    <li><strong>Deep Breathing Exercises</strong>: Helps reduce stress.</li>
+    <li><strong>Regular Breaks</strong>: Use techniques like the Pomodoro Technique.</li>
+    <li><strong>Healthy Habits</strong>: Maintain good sleep, nutrition, and hydration.</li>
+</ul>
+
+<h3>Positive Affirmations</h3>
+
+- **Believe in Yourself**: Remind yourself of your capabilities.
+- **Progress Over Perfection**: Focus on learning, not just grades.
+- **You're Not Alone**: Many students experience the same feelings.
+
+---
+
+## Final Thoughts
+
+Remember, complex topics become manageable when broken down into smaller parts. Use the memory aids and visuals provided to reinforce your understanding. Be patient with yourself, and know that every effort you make is a step toward success.
+
+You've got this! Keep pushing forward, and don't hesitate to revisit any section as needed.
+
+---
+
+## HTML Code
+
+Below is the HTML code for the content above. You can copy and paste it into an HTML file to view it in your browser.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calming Study Space</title>
+    <style>
+        /* Styles omitted for brevity; same as provided earlier */
+    </style>
+</head>
+<body>
+    <!-- Content omitted for brevity; same as provided earlier -->
+</body>
+</html>
